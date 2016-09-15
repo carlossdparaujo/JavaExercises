@@ -22,4 +22,9 @@ public class VerticalLineAsteriskPrinterTest {
     public void shouldPrintSevenAsterisksInAVerticalLine() {
         assertEquals("*\n*\n*\n*\n*\n*\n*", VerticalLineAsteriskPrinter.printValue(7));
     }
+
+    @Test
+    public void shouldPrintNoAsterisk_whenGivenNegativeValue() {
+        assertEquals("", VerticalLineAsteriskPrinter.printValue(-1));
+    }
 }

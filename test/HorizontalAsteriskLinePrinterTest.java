@@ -22,4 +22,9 @@ public class HorizontalAsteriskLinePrinterTest {
     public void shouldPrintSevenAsterisksInAHorizontalLine() {
         assertEquals("*******", HorizontalAsteriskLinePrinter.printValue(7));
     }
+
+    @Test
+    public void shouldPrintNoAsterisk_whenGivenNegativeValue() {
+        assertEquals("", HorizontalAsteriskLinePrinter.printValue(-1));
+    }
 }
