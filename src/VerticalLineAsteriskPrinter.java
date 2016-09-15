@@ -1,12 +1,12 @@
 public class VerticalLineAsteriskPrinter {
 
-    public static String printValue(int number) {
+    public static String printValue(int asterisksNumber) {
         StringBuilder builder = new StringBuilder();
 
-        for (int i = 0; i < number; ++i) {
+        for (int i = 0; i < asterisksNumber; ++i) {
             builder.append("*");
 
-            if (i < number - 1) {
+            if (i < asterisksNumber - 1) {
                 builder.append("\n");
             }
         }

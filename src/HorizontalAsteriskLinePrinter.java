@@ -1,9 +1,9 @@
 public class HorizontalAsteriskLinePrinter {
 
-    public static String printValue(int number) {
+    public static String printValue(int asterisksNumber) {
         StringBuilder builder = new StringBuilder();
 
-        for (int i = 0; i < number; ++i) {
+        for (int i = 0; i < asterisksNumber; ++i) {
             builder.append("*");
         }
 
