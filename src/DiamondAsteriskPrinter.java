@@ -45,7 +45,7 @@ public class DiamondAsteriskPrinter {
 
     protected void fillLine(StringBuilder builder, int currentLine) {
         for (int j = 0; j < diamondWidth; ++j) {
-            if (j >= getFirstAsteriskIndex(currentLine) && j <= getLastAsteriskIndex(currentLine)) {
+            if (canAppendAsterisk(j, currentLine)) {
                 builder.append("*");
             } else {
                 builder.append(" ");
@@ -53,10 +53,8 @@ public class DiamondAsteriskPrinter {
         }
     }
 
-    protected void addLineBreaker(StringBuilder builder, int currentLine) {
-        if (currentLine < diamondHeight - 1) {
-            builder.append("\n");
-        }
+    private boolean canAppendAsterisk(int index, int currentLine) {
+        return index >= getFirstAsteriskIndex(currentLine) && index <= getLastAsteriskIndex(currentLine);
     }
 
     private int getFirstAsteriskIndex(int currentLine) {
@@ -73,5 +71,11 @@ public class DiamondAsteriskPrinter {
 
     private int getLastAsteriskIndex(int currentLine) {
         return (diamondWidth - 1) - getFirstAsteriskIndex(currentLine);
+    }
+
+    protected void addLineBreaker(StringBuilder builder, int currentLine) {
+        if (currentLine < diamondHeight - 1) {
+            builder.append("\n");
+        }
     }
 }
