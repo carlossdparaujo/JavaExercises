@@ -31,6 +31,6 @@ public class NamedDiamondAsteriskPrinterTest {
     }
 
     private String getPrintedDiamond(int n) {
-        return new NamedDiamondAsteriskPrinter(n, NAME).printValue();
+        return new NamedDiamondAsteriskPrinter().printValue(n, NAME);
     }
 }

@@ -1,27 +1,25 @@
 public class DiamondAsteriskPrinter {
 
-    protected final int n;
-    private final int diamondHeight;
-    private final int diamondWidth;
+    protected int n;
+    private int diamondHeight;
+    private int diamondWidth;
 
-    public DiamondAsteriskPrinter(int n) {
+    public String printValue(int n) {
         this.n = n;
         this.diamondHeight = getDiamondHeight(n);
         this.diamondWidth = getDiamondWidth(n);
-    }
 
-    private static int getDiamondHeight(int lines) {
-        return lines*2 - 1;
-    }
-
-    private static int getDiamondWidth(int lines) {
-        return 1 + (lines - 1)*2;
-    }
-
-    public String printValue() {
         StringBuilder builder = new StringBuilder();
         buildDiamond(builder, 0);
         return builder.toString();
+    }
+
+    private int getDiamondHeight(int lines) {
+        return lines*2 - 1;
+    }
+
+    private int getDiamondWidth(int lines) {
+        return 1 + (lines - 1)*2;
     }
 
     private void buildDiamond(StringBuilder builder, int currentLine) {

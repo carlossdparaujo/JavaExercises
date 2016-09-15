@@ -1,11 +1,10 @@
 public class NamedDiamondAsteriskPrinter extends DiamondAsteriskPrinter {
 
-    private final String name;
+    private String name;
 
-    public NamedDiamondAsteriskPrinter(int n, String name) {
-        super(n);
-
+    public String printValue(int n, String name) {
         this.name = name;
+        return printValue(n);
     }
 
     @Override
