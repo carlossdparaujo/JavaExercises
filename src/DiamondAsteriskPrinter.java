@@ -23,11 +23,9 @@ public class DiamondAsteriskPrinter {
     }
 
     private static void printLine(StringBuilder builder, int diamondLine, int lines) {
-        int currentLine;
+        int currentLine = diamondLine;
         if (diamondLine >= lines) {
             currentLine = (getDiamondSize(lines) - 1) - diamondLine;
-        } else {
-            currentLine = diamondLine%lines;
         }
 
         for (int j = 0; j < getCenterSize(lines); ++j) {
