@@ -22,4 +22,9 @@ public class IsoscelesTriangleAsteriskPrinterTest {
     public void shouldPrintFiveLineIsoscelesTriangle() {
         assertEquals("    *    \n   ***   \n  *****  \n ******* \n*********", IsoscelesTriangleAsteriskPrinter.printValue(5));
     }
+
+    @Test
+    public void shouldPrintNoAsterisk_whenGivenNegativeValue() {
+        assertEquals("", IsoscelesTriangleAsteriskPrinter.printValue(-1));
+    }
 }

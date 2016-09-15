@@ -3,22 +3,16 @@ public class IsoscelesTriangleAsteriskPrinter {
     public static String printValue(int lines) {
         StringBuilder builder = new StringBuilder();
 
-        int baseSize = 1 + (lines - 1)*2;
-        int middleIndex = (baseSize - 1)/2;
+        int baseSize = getBaseSize(lines);
 
-        int asterisksInLine = 1;
         for (int i = 0; i < lines; ++i) {
-            int spaces = ((asterisksInLine - 1)/2);
-
             for (int j = 0; j < baseSize; ++j) {
-                if (j >= middleIndex - spaces && j <= middleIndex + spaces) {
+                if (j >= getFirstAsteriskIndex(i, lines) && j <= getLastAsteriskIndex(i, lines)) {
                     builder.append("*");
                 } else {
                     builder.append(" ");
                 }
             }
-
-            asterisksInLine += 2;
 
             if (i < lines - 1) {
                 builder.append("\n");
@@ -26,5 +20,21 @@ public class IsoscelesTriangleAsteriskPrinter {
         }
 
         return builder.toString();
+    }
+
+    private static int getBaseSize(int lines) {
+        return 1 + (lines - 1)*2;
+    }
+
+    private static int getLastAsteriskIndex(int currentLine, int lines) {
+        return (getBaseSize(lines) - 1) - getFirstAsteriskIndex(currentLine, lines);
+    }
+    
+    private static int getFirstAsteriskIndex(int currentLine, int lines) {
+        return (getBaseSize(lines) - getAsterisksPerLine(currentLine))/2;
+    }
+
+    private static int getAsterisksPerLine(int line) {
+        return (line*2 + 1);
     }
 }
