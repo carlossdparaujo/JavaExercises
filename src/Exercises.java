@@ -16,5 +16,9 @@ public class Exercises {
         System.out.println("Exercise 4)\n");
         System.out.println(RightTriangleAsteriskPrinter.printValue(5));
         System.out.println("");
+
+        System.out.println("Exercise 5)\n");
+        System.out.println(IsoscelesTriangleAsteriskPrinter.printValue(3));
+        System.out.println("");
     }
 }
