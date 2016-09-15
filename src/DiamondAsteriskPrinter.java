@@ -1,63 +1,70 @@
 public class DiamondAsteriskPrinter {
 
-    public static String printValue(int lines) {
+    private final int n;
+    private final int diamondHeight;
+    private final int diamondWidth;
+
+    public DiamondAsteriskPrinter(int n) {
+        this.n = n;
+        this.diamondHeight = getDiamondHeight(n);
+        this.diamondWidth = getDiamondWidth(n);
+    }
+
+    private static int getDiamondHeight(int lines) {
+        return lines*2 - 1;
+    }
+
+    private static int getDiamondWidth(int lines) {
+        return 1 + (lines - 1)*2;
+    }
+
+    public String printValue() {
         StringBuilder builder = new StringBuilder();
-
-        buildDiamond(builder, 0, lines);
-
+        buildDiamond(builder, 0);
         return builder.toString();
     }
 
-    private static void buildDiamond(StringBuilder builder, int currentLine, int lines) {
-        if (lines <= 0) {
+    private void buildDiamond(StringBuilder builder, int currentLine) {
+        if (n <= 0) {
             return;
         }
 
-        printLine(builder, currentLine, lines);
+        printLine(builder, currentLine);
 
-        if (currentLine == getDiamondSize(lines) - 1) {
+        if (currentLine == diamondHeight - 1) {
             return;
         }
 
-        buildDiamond(builder, currentLine + 1, lines);
+        buildDiamond(builder, currentLine + 1);
     }
 
-    private static void printLine(StringBuilder builder, int diamondLine, int lines) {
-        int currentLine = diamondLine;
-        if (diamondLine >= lines) {
-            currentLine = (getDiamondSize(lines) - 1) - diamondLine;
-        }
-
-        for (int j = 0; j < getCenterSize(lines); ++j) {
-            if (j >= getFirstAsteriskIndex(currentLine, lines) && j <= getLastAsteriskIndex(currentLine, lines)) {
+    private void printLine(StringBuilder builder, int currentLine) {
+        for (int j = 0; j < diamondWidth; ++j) {
+            if (j >= getFirstAsteriskIndex(currentLine) && j <= getLastAsteriskIndex(currentLine)) {
                 builder.append("*");
             } else {
                 builder.append(" ");
             }
         }
 
-        if (diamondLine < getDiamondSize(lines) - 1) {
+        if (currentLine < diamondHeight - 1) {
             builder.append("\n");
         }
     }
 
-    private static int getDiamondSize(int lines) {
-        return lines*2 - 1;
+    private int getFirstAsteriskIndex(int currentLine) {
+        return (diamondWidth - getNumberOfAsterisksOnLine(currentLine))/2;
     }
 
-    private static int getCenterSize(int lines) {
-        return 1 + (lines - 1)*2;
+    private int getNumberOfAsterisksOnLine(int currentLine) {
+        if (currentLine >= n) {
+            currentLine = (diamondHeight - 1) - currentLine;
+        }
+
+        return currentLine*2 + 1;
     }
 
-    private static int getLastAsteriskIndex(int currentLine, int lines) {
-        return (getCenterSize(lines) - 1) - getFirstAsteriskIndex(currentLine, lines);
-    }
-
-    private static int getFirstAsteriskIndex(int currentLine, int lines) {
-        return (getCenterSize(lines) - getAsterisksPerLine(currentLine))/2;
-    }
-
-    private static int getAsterisksPerLine(int line) {
-        return (line*2 + 1);
+    private int getLastAsteriskIndex(int currentLine) {
+        return (diamondWidth - 1) - getFirstAsteriskIndex(currentLine);
     }
 }

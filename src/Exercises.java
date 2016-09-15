@@ -22,7 +22,7 @@ public class Exercises {
         System.out.println("");
 
         System.out.println("Exercise 6)\n");
-        System.out.println(DiamondAsteriskPrinter.printValue(3));
+        System.out.println(new DiamondAsteriskPrinter(3).printValue());
         System.out.println("");
 
         System.out.println("Exercise 7)\n");
