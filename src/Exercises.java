@@ -32,5 +32,13 @@ public class Exercises {
         System.out.println("Exercise 8)\n");
         FizzBuzzPrinter.fizzBuzz();
         System.out.println("");
+
+        System.out.println("Exercise 9)\n");
+
+        for (int i = 1; i <= 50; ++i) {
+            System.out.println("Prime Factors of " + i + ": " + PrimeFactorPrinter.generate(i));
+        }
+
+        System.out.println("");
     }
 }
