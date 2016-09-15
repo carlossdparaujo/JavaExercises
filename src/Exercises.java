@@ -26,7 +26,7 @@ public class Exercises {
         System.out.println("");
 
         System.out.println("Exercise 7)\n");
-        System.out.println(NamedDiamondAsteriskPrinter.printValue(5, "Carlos"));
+        System.out.println(new NamedDiamondAsteriskPrinter(5, "Carlos").printValue());
         System.out.println("");
 
         System.out.println("Exercise 8)\n");

@@ -3,28 +3,34 @@ import static org.junit.Assert.*;
 
 public class NamedDiamondAsteriskPrinterTest {
 
+    private static final String NAME = "Carlos";
+
     @Test
     public void shouldPrintNothing() {
-        assertEquals("", NamedDiamondAsteriskPrinter.printValue(0, "Carlos"));
+        assertEquals("", getPrintedDiamond(0));
     }
 
     @Test
     public void shouldPrintOnlyTheName() {
-        assertEquals("Carlos", NamedDiamondAsteriskPrinter.printValue(1, "Carlos"));
+        assertEquals(NAME, getPrintedDiamond(1));
     }
 
     @Test
     public void shouldPrintANamedThreeLineDiamond() {
-        assertEquals(" * \nCarlos\n * ", NamedDiamondAsteriskPrinter.printValue(2, "Carlos"));
+        assertEquals(" * \n" + NAME + "\n * ", getPrintedDiamond(2));
     }
 
     @Test
     public void shouldPrintANamedFiveLineDiamond() {
-        assertEquals("  *  \n *** \nCarlos\n *** \n  *  ", NamedDiamondAsteriskPrinter.printValue(3, "Carlos"));
+        assertEquals("  *  \n *** \n" + NAME + "\n *** \n  *  ", getPrintedDiamond(3));
     }
 
     @Test
     public void shouldPrintNothing_whenGivenNegativeValue() {
-        assertEquals("", NamedDiamondAsteriskPrinter.printValue(-1, "Carlos"));
+        assertEquals("", getPrintedDiamond(-1));
+    }
+
+    private String getPrintedDiamond(int n) {
+        return new NamedDiamondAsteriskPrinter(n, NAME).printValue();
     }
 }
